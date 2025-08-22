@@ -1,28 +1,30 @@
 # REDREF
 
-A red teaming reference for attacking boxes. Thie repository contains notes, comands and tips for penetration testing. Notes are arranged according to the [MITRE ATT&CK framework](https://attack.mitre.org/).
+A red teaming reference for attacking boxes. Thie repository contains notes, comands and tips for penetration testing. Notes are arranged according to the [MITRE ATT&CK framework](https://attack.mitre.org/), which also aligns nicely with the way Kali Linux is structured.
 
 
 
 ## Setup
-
-myproject
+```
+[myproject]
     |
-    |__ myproject.md        <-- stores the summary notes
+    |__ [myproject].md      <-- stores the summary notes
     |__ requirements.txt    <-- python libraries used within this project
     |__ variables.sh        <-- contains variables for the target environment
-    |__ .gitignore          <-- use to tell git to ignore certain files/filetypes
+    |__ .gitignore          <-- use to tell git to ignore certain files/filetypes if using version control
     |__ .venv               <-- folder for python interpreter specific to this project
+```
 
-My preferred method is on starting a new project is to create a folder under on the local filesystem for the project. This folder will store all scripts and outputs specific to the project. I also create a notes file in markdown (.md) format for recording key notes throughout the testing.
+When starting a new project it is handy to create a folder structure similar to above the on the local filesystem (replace `[myproject]` with the name of the project). This folder will store all scripts and outputs specific to the project.
 
-It is very useful to set shell variables that can be reused multiple times. This saves typing these on the command line repeatedly. Most of the commands in this repository rely on these variables being set.
+More details on this are below.
 
-The project folder should be under Git version control and synced to a repository.
+### Create the notes file
+Markdown (.md) format is very useful for capturing code related notes. Creating a `[myproject.md]` in the project root folder provides a ready reference for the process, theories, commands, dead ends, findings etc specific to the project.
 
 
 ### Set variables
-Use this format below. When recommencing work on a project just `source variables.sh` and you are away.
+It is very useful to set shell variables that can be reused multiple times. Most of the commands in this repository rely on these variables being set. When recommencing work on a project just `source variables.sh`.
 
 ```
 target_ip='10.10.10.10'
@@ -31,9 +33,8 @@ pass='password123'
 domain='mydomain'
 ```    
 
-
 ### Python virutal environments
-When crafting payloads or exploits, or running custom cracking tools it is often useful to use python. The best way of doing this is to create a virtual environment within the project folder.
+When crafting payloads or exploits or running custom cracking tools it is often useful to use Python. The best way of doing this is to create a virtual environment within the project folder.
 - Install venv: `sudo apt install python3-venv`
 - Create a new virtual environment called .venv in the current directory `python -m venv .venv`
 - Activate the environment `source .venv/bin/activate`
