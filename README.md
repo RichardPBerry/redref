@@ -1,6 +1,6 @@
 # REDREF
 
-A red teaming reference for attacking boxes. Thie repository contains notes, comands and tips for penetration testing. Notes are arranged according to the [MITRE ATT&CK framework](https://attack.mitre.org/), which also aligns nicely with the way Kali Linux is structured.
+A red teaming reference for attacking boxes. This repository contains notes, comands and tips for penetration testing. Notes are arranged according to the [MITRE ATT&CK framework](https://attack.mitre.org/), which also aligns nicely with the way Kali Linux is structured.
 
 
 
@@ -25,6 +25,7 @@ Markdown (.md) format is very useful for capturing code related notes. Creating 
 
 ### Set variables
 It is very useful to set shell variables that can be reused multiple times. Most of the commands in this repository rely on these variables being set. When recommencing work on a project just `source variables.sh`.
+Example contents:
 
 ```
 target_ip='10.10.10.10'
