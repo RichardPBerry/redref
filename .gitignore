@@ -1,2 +1,3 @@
 *.ovpn
-.venv
+.venv/
+*.code-workspace
