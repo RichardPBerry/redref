@@ -1,4 +1,6 @@
 # Password cracking
+**NOTE:** Do NOT post real hash values here!!
+
 
 # Hash identification
 First stop with any hash is to understand what you have.
@@ -11,12 +13,20 @@ First stop with any hash is to understand what you have.
 Used in Windows authentication.
 Example:
 ```
-dmin::N46iSNekpT:08ca45b7d7ea58ee:88dcbe4446168966a153a0064958dac6:5c7830315c7830310000000000000b45c67103d07d7b95acd12ffa11230e0000000052920b85f78d013c31cdb3b92f5d765c783030
+admin:N46iSNekpT:08ca45b7d7ea58ee:88dcbe4446168966a153a0064958dac6:5c7830315c7830310000000000000b45c67103d07d7b95acd12ffa11230e0000000052920b85f78d013c31cdb3b92f5d765c783030
 ```
 **Crack formats:**
 - john: `format=netntlmv2`
 - hashcat: `mode=5600`
 
+## md5
+Example:
+```
+admin:8743b52063cd84097a65d1633f5c74f5
+```
+**Crack formats:**
+- john: `format=raw-md5`
+- hashcat: `mode=0`
 
 
 # Cracking
@@ -31,6 +41,7 @@ If not already done, install seclists:
 - `john --format=$format hashes.txt`: Default mode
 - `john --format=$format hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt`: Wordlist mode using rockyou.txt
 
+Note: If you are getting the 'No password hashes left to crack' message, remove the .pot file (where John stores previously cracked hashes): `rm ~/.john/john.pot`.
 
 
 **References:**
