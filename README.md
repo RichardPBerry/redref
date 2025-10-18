@@ -37,11 +37,15 @@ domain='mydomain'
 ### Python virutal environments
 When crafting payloads or exploits or running custom cracking tools it is often useful to use Python. The best way of doing this is to create a virtual environment within the project folder.
 - Install venv: `sudo apt install python3-venv`
-- Create a new virtual environment called .venv in the current directory `python -m venv .venv`
-- Activate the environment `source .venv/bin/activate`
-- Create a text file with python libraries required for the project (one library per line). By convention this is called `requirements.txt`.
-- Install required packages listed in requriements.txt `pip install requirements.txt`
 
+Then from the root project folder run the following:
+```
+python -m venv .venv        # Create a new virtual environment called .venv in the current directory
+source .venv/bin/activate   # Activate the environment
+touch requirements.txt      # Create a requirements.txt file
+```
+By convention, the filename `requirements.txt` signifiies the python  libraries required for the project (one library per line). 
+Install required packages listed in requriements.txt by using `pip install -r requirements.txt`
 
 
 ## General process
@@ -70,17 +74,3 @@ gobuster vhost -v -u https://abrictosecurity.com -w /usr/share/wordlists/subdoma
 ### Sniffing & Spoofing
 Show connected and listening sockets `netstat -an` (-n shows numberical port)
 
-
-## Exploitation
-
-### Reverse shells
-- Create a listener using netcat `nc -lvvp [port]`
-- Spawn a bash shell `python3 -c 'import pty;pty.spawn("/bin/bash")'`
-
-### Web Server Listener
-
-
-
-
-## XSS Payloads
-- Img: 
