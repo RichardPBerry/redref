@@ -35,6 +35,13 @@ By convention, the filename `requirements.txt` signifiies the python  libraries 
 Install required packages listed in requriements.txt by using `pip install -r requirements.txt`
 
 
+## HackTheBox - Adding to hosts file
+HtB machines are commonly open on port 80, signifying a web server. However, navigating to the IP address via web browser may not resolve the site. To rectiy this edit the `/etc/hosts` file, adding a line such as:
+
+'''
+123.456.78.90   hostname.htb
+'''
+
 ## Super useful reference sites:
 
 1. [WADComs](https://wadcoms.github.io/): An interactive cheat sheet, containing a curated list of offensive security tools and their respective commands, to be used against Windows/AD environments.

