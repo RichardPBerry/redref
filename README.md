@@ -2,58 +2,37 @@
 
 A red teaming reference for attacking boxes. This repository contains notes, comands and tips for penetration testing. Notes are arranged according to the [MITRE ATT&CK framework](https://attack.mitre.org/), which also aligns nicely with the way Kali Linux is structured.
 
+Note that this repository is NOT intended to be a guide to pen testing or attacking machines. Instead, it is intended to be a concise reference of commands and tips that are useful for pentesting.
 
+## Quickstart
+Copy the `00 - template` folder and rename the folder with the name of your project. This folder will store all scripts and outputs specific to the project.
 
-## Setup
+The template contains the following files and structure:
+
 ```
 [myproject]
     |
-    |__ [myproject].md      <-- stores the summary notes
-    |__ requirements.txt    <-- python libraries used within this project
-    |__ variables.sh        <-- contains variables for the target environment
-    |__ .gitignore          <-- use to tell git to ignore certain files/filetypes if using version control
-    |__ .venv               <-- folder for python interpreter specific to this project
+    |__ [myproject_notes].md    <-- Markdown file for storing notes, testing ideas and outcomes, etc.
+    |__ requirements.txt        <-- Python libraries used within this project
+    |__ variables.sh            <-- Stores variables for the target environment. `source variables.sh` to import into the current shell session.
+    |__ .gitignore              <-- Tell git to ignore certain files/filetypes if using version control
+    |__ .venv               <-- Folder for python interpreter specific to this project (see below)
 ```
-
-When starting a new project it is handy to create a folder structure similar to above the on the local filesystem (replace `[myproject]` with the name of the project). This folder will store all scripts and outputs specific to the project.
-
-More details on this are below.
-
-### Create the notes file
-Markdown (.md) format is very useful for capturing code related notes. Creating a `[myproject.md]` in the project root folder provides a ready reference for the process, theories, commands, dead ends, findings etc specific to the project.
-
-
-### Set variables
-It is very useful to set shell variables that can be reused multiple times. Most of the commands in this repository rely on these variables being set. When recommencing work on a project just `source variables.sh`.
-Example contents:
-
-```
-target_ip='10.10.10.10'
-user='john'
-pass='password123'
-domain='mydomain'
-```    
 
 ### Python virutal environments
 When crafting payloads or exploits or running custom cracking tools it is often useful to use Python. The best way of doing this is to create a virtual environment within the project folder.
 - Install venv: `sudo apt install python3-venv`
 
 Then from the root project folder run the following:
+
 ```
 python -m venv .venv        # Create a new virtual environment called .venv in the current directory
 source .venv/bin/activate   # Activate the environment
 touch requirements.txt      # Create a requirements.txt file
 ```
+
 By convention, the filename `requirements.txt` signifiies the python  libraries required for the project (one library per line). 
 Install required packages listed in requriements.txt by using `pip install -r requirements.txt`
-
-
-## General process
-
-### Getting started.
-
-- **Host and Port Scanning**: First step is usually to run nmap to find out what ports and services are open. Use a range of scans. At least a broad scan to identify open ports, then use service and script enumeration to obtain further details.
-
 
 
 ## Super useful reference sites:
