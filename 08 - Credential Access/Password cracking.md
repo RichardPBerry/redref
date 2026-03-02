@@ -48,7 +48,7 @@ mode=1400       # sha256
 hashcat -m $mode hashes.txt
 
 # Use a wordlists
-hashcat -m $mode hashes.txt /us/share/wordlists/rockyou.txt
+hashcat -m $mode hashes.txt /usr/share/wordlists/rockyou.txt
 ```
 
 ## John the ripper
