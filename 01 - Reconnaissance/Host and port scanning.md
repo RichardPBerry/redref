@@ -17,6 +17,7 @@ Nmap is a recon power tool for host and port scanning.
 
 - `nmap x.y.z.v/n -v -sn -oN 01_nmap_discovery.txt`: Host discovery. Scan a CIDR block to identify hosts. Disable port scanning (`-sn`) but add verbose mode to get a bit more output.
 - `nmap $target_ip -sS -Pn -T4 -oN 01_nmap_synscan.txt`: Simple top 1000 ports using default SYN scan of a target host and ignoring ping results.
+- `nmap $target_ip -sV -Pn -T4 -oN 01_nmap_services.txt`: Simple top 1000 ports retrieving service/version info and ignoring ping results
 - `nmap $target_ip -p- --min-rate=1000 -Pn --diable-arp-ping -oN 01_nmap_full_synscan.txt`: Scan all ports - useful if you the above does not return expected results and you suspect more unusual ports may be present.
 - `nmap $target_ip -sU -Pn -oN 01_nmap_udpscan.txt`: UDP scan. Try this is not much is present on tcp. Eg. (dns)
 
